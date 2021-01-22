@@ -1,15 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { TrackingService } from '../../services/tracking.service';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-grade',
   templateUrl: './grade.component.html',
-  styleUrls: ['./grade.component.scss']
+  styleUrls: ['./grade.component.scss'],
 })
 export class GradeComponent implements OnInit {
+  connectuser: any = JSON.parse(localStorage.getItem('student') || '{}');
+  grades: any = [];
+  average: any;
+  constructor(
+    private gradeService: TrackingService,
+    private router: Router,
+    private activateroute: ActivatedRoute
+  ) {}
 
-  constructor() { }
+  ngOnInit() {
+    if (
+      this.activateroute.snapshot.params.student &&
+      this.activateroute.snapshot.params.student !== this.connectuser._id
+    ) {
+      this.gradeService
+        .getGradeByStudent(this.activateroute.snapshot.params.student)
 
-  ngOnInit(): void {
+        .subscribe((data: any) => {
+          this.grades = data;
+          var sum = 0;
+          for (var i = 0; i < this.grades.length; i++) {
+            sum += Number(this.grades[i]['note']);
+          }
+          this.average = sum / this.grades.length;
+        });
+    } else {
+      this.gradeService
+        .getGradeByStudent(this.connectuser._id)
+        .subscribe((data: any) => {
+          this.grades = data;
+        });
+    }
   }
-
 }

@@ -26,10 +26,13 @@
         <th>Grade</th>
         <th>Average</th>
       </tr>
+      <tr *ngFor="let grade of grades">
+        <td>{{ grade.grade["materiel"] }}</td>
+        <td>{{ grade.grade["note"] }}</td>
+      </tr>
       <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
+        <td>Average</td>
+        <td>{{ average }}</td>
       </tr>
     </table>
   </body>
