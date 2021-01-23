@@ -60,6 +60,7 @@ export class ScheduleComponent1 implements OnInit {
     slotCount: 6,
   };
   public data: any = [];
+  scheduleObj: any;
 
   constructor(
     private scheduleService: ScheduleService,
