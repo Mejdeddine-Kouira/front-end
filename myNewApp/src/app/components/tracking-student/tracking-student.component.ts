@@ -31,9 +31,16 @@ export class TrackingStudentComponent {
   dataSource: any = ELEMENT_DATA;
   grades: any = [];
   list: any = [];
+  admin:any
+  student:any
+  teacher:any
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit() {
+    this.admin=localStorage.getItem('admin')
+    this.student=localStorage.getItem('student')
+    this.teacher=localStorage.getItem('teacher')
+
     this.getAllGrades();
   }
 

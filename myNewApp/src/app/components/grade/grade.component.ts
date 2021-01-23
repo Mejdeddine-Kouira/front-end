@@ -12,6 +12,10 @@ export class GradeComponent implements OnInit {
   connectuser: any = JSON.parse(localStorage.getItem('student') || '{}');
   grades: any = [];
   average: any;
+  admin:any
+   student:any
+   teacher:any
+
   constructor(
     private gradeService: TrackingService,
     private router: Router,
@@ -19,6 +23,10 @@ export class GradeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.admin=localStorage.getItem('admin')
+    this.student=localStorage.getItem('student')
+    this.teacher=localStorage.getItem('teacher')
+
     if (
       this.activateroute.snapshot.params.student &&
       this.activateroute.snapshot.params.student !== this.connectuser._id

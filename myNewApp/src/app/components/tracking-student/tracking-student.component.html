@@ -1,3 +1,7 @@
+<app-navbar-admin *ngIf="admin !==null"></app-navbar-admin>
+<app-navbar-student *ngIf="student !== null"></app-navbar-student>
+<app-navbar-teacher  *ngIf="teacher !== null"></app-navbar-teacher>
+
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
 

@@ -25,19 +25,34 @@ export class LoginComponent implements OnInit {
       this.service
         .login(this.username, this.password, this.role)
         .subscribe((res: any) => {
-          if (res[0].username === this.username && res[0].password === this.password && res[0].role === 'admin') {
-            localStorage.setItem('admin', JSON.stringify(res));
+          if (
+            res.username === this.username &&
+            res.password === this.password &&
+            res.role === 'admin'
+          ) {
+            localStorage.setItem('user', JSON.stringify(res));
+            localStorage.setItem('role', 'admin');
             localStorage['login_status'] = '1';
 
-            this.router.navigate(['/']);
-          } else if (res[0].username === this.username && res[0].password === this.password && res[0].role === 'student') {
+            this.router.navigate(['/admin']);
+          } else if (
+            res.username === this.username &&
+            res.password === this.password &&
+            res.role === 'student'
+          ) {
             localStorage['login_status'] = '1';
-            localStorage.setItem('student', JSON.stringify(res));
-            this.router.navigate(['/']);
-          } else if (res[0].username === this.username && res[0].password === this.password && res[0].role === 'teacher') {
+            localStorage.setItem('user', JSON.stringify(res));
+            localStorage.setItem('role', 'student');
+            this.router.navigate(['/student']);
+          } else if (
+            res.username === this.username &&
+            res.password === this.password &&
+            res.role === 'teacher'
+          ) {
             localStorage['login_status'] = '1';
-            localStorage.setItem('teacher', JSON.stringify(res));
-            this.router.navigate(['/']);
+            localStorage.setItem('user', JSON.stringify(res));
+            localStorage.setItem('role', 'teacher');
+            this.router.navigate(['/teacher']);
           } else if (res === null) {
             alert('invaild username or password');
           }
