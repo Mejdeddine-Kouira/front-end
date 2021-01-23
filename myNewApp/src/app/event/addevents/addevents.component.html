@@ -60,7 +60,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  routerLink="displayEvents">
+        <a class="nav-link"  routerLink="addEvent">
           <i class="fa fa-globe">
             <span class="badge badge-success">3</span>
           </i>
@@ -75,6 +75,53 @@
   </div>
 </nav>
 <div class="center">
+  <form>
+    <label>Event:</label>
+    <br>
+    <input 
+    [(ngModel)]= "acitvityName"
+    type="text"
+    id="acitvityName"
+    name="acitvityName"
+    >
+    <br>
+    <br>
+    <label>Description:</label>
+    <br>
+    <input 
+    id="description"
+    name="description"
+    [(ngModel)]="description"
+    type="text">
+    <br>
+    <br>
+    <label>Date:</label>
+    <br>
+    <input
+    id="date"
+    name="date"
+    [(ngModel)]="date"
+    type="date">
+    <br>
+    <br>
+    <label>Time:</label>
+    <br>
+    <input 
+    id="hour"
+    name="hour"
+    [(ngModel)]="hour"
+    type="time">
+    <br>
+    <br>
+    <input
+    (click)="addEvent()"
+    (click)="getEvents()"
+    type="submit"
+    class="fadeIn fourth"
+  />
+  </form>
+  <br>
+  <br>
   <div *ngFor="let event of events">
     <h2>Event : {{event.acitvityName}}</h2>
     <h5>Description : {{event.description}}</h5>
@@ -82,3 +129,4 @@
     <h4>Time: {{event.hour}}</h4>
   </div>
 </div>
+

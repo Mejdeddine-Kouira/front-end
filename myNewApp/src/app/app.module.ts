@@ -13,6 +13,7 @@ import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { NavbarStudentComponent } from './navbar-student/navbar-student.component';
 import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.component';
 import { APP_BASE_HREF } from '@angular/common';
+import { AddeventsComponent } from './event/addevents/addevents.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { APP_BASE_HREF } from '@angular/common';
     NavbarAdminComponent,
     NavbarStudentComponent,
     NavbarTeacherComponent,
+    AddeventsComponent,
   ],
   imports: [
     BrowserModule,
