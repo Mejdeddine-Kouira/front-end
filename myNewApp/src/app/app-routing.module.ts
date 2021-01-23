@@ -22,6 +22,8 @@ const Routes = [
   { path:'navbar-teacher', component:NavbarTeacherComponent},
   { path: 'tracking', component: TrackingStudentComponent },
   { path: 'grade/:student', component: GradeComponent},
+  { path: 'announcements', component: AnnouncementsComponent },
+  { path: '', component: LoginComponent },
   {
     path: 'student/profile',
     component: StudentProfileComponent,
